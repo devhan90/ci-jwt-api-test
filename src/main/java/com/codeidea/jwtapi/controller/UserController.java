@@ -36,6 +36,13 @@ public class UserController {
         return ResponseEntity.ok(userService.signup(userDto));
     }
 
+    @PostMapping("/logout")
+    public ResponseEntity<UserDto> logout(
+            @Valid @RequestBody UserDto userDto
+    ) {
+        return ResponseEntity.ok(userService.logout(userDto));
+    }
+
     // 관리자, 사용자 둘다 사용가능
     @GetMapping("/user")
     @PreAuthorize("hasAnyRole('USER','ADMIN')")
@@ -49,7 +56,5 @@ public class UserController {
     public ResponseEntity<UserDto> getUserInfo(@PathVariable String username) {
         return ResponseEntity.ok(userService.getUserWithAuthorities(username));
     }
-
-
 
 }

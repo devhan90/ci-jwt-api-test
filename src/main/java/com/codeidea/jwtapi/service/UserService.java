@@ -44,6 +44,12 @@ public class UserService {
         return UserDto.from(userRepository.save(user));
     }
 
+    @Transactional
+    public UserDto logout(UserDto userDto) {
+
+        return null;
+    }
+
     //username을 기준으로 정보를 가져옴
     @Transactional(readOnly = true)
     public UserDto getUserWithAuthorities(String username) {
@@ -59,4 +65,5 @@ public class UserService {
                         .orElseThrow(() -> new NotFoundMemberException("Member not found"))
         );
     }
+
 }

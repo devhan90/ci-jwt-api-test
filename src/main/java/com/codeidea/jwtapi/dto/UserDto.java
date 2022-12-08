@@ -4,6 +4,7 @@ import com.codeidea.jwtapi.entity.User;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Set;
@@ -31,6 +32,9 @@ public class UserDto {
 
    private Set<AuthorityDto> authorityDtoSet;
 
+   private String accessToken;
+   private String refreshToken;
+
    public static UserDto from(User user) {
       if(user == null) return null;
 
@@ -42,4 +46,5 @@ public class UserDto {
                       .collect(Collectors.toSet()))
               .build();
    }
+
 }
